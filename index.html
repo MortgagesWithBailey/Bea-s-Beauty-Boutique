@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>Brea's Beauty Boutique</title>
+    <meta name="description" content="Welcome to Brea's Beauty Boutique. Book your next lash, nail, or spa service with us.">
+    <link rel="preload" href="logo-gradient.png?v=20260701-no-flash" as="image">
+    <style>
+        html,
+        body.splash-active {
+            margin: 0;
+            min-height: 100%;
+            background: #FFFFFF;
+        }
+
+        body.splash-active {
+            overflow: hidden;
+        }
+
+        body.splash-active > :not(#splash-screen) {
+            visibility: hidden;
+        }
+
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: #FFFFFF;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css?v=20260701-no-flash">
+</head>
+<body class="splash-active">
+    <div class="splash-screen" id="splash-screen" aria-hidden="true">
+        <div class="splash-inner">
+            <div class="splash-logo-wrap">
+                <img class="splash-logo" src="logo-gradient.png?v=20260701-no-flash" alt="Brea's Beauty Boutique logo">
+                <div class="splash-shimmer"></div>
+            </div>
+            <div class="splash-copy">
+                <p class="splash-kicker">Welcome to</p>
+                <p class="splash-title">Brea's Beauty Boutique</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-watermark"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-social" id="nav-social">
+            <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="https://instagram.com/breas_beautyboutique" target="_blank" class="nav-social-btn social-instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61567885860460" target="_blank" class="nav-social-btn social-facebook" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://tiktok.com/@breasbeautyboutique" target="_blank" class="nav-social-btn social-tiktok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        <div class="logo">
+            <h1>Brea's Beauty Boutique</h1>
+        </div>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="tel:7054920558" style="font-weight: bold; color: var(--primary-dark);"><i class="fa-solid fa-phone"></i> 705-492-0558</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#reviews">Reviews</a>
+            </div>
+            <div class="cart-icon" id="cart-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </div>
+
+        <!-- Mobile slide-down menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-menu-links">
+                <a href="tel:7054920558"><i class="fa-solid fa-phone"></i> 705-492-0558</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#reviews">Reviews</a>
+            </div>
+            <div class="mobile-menu-social">
+                <a href="https://instagram.com/breas_beautyboutique" target="_blank" class="nav-social-btn social-instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61567885860460" target="_blank" class="nav-social-btn social-facebook" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://tiktok.com/@breasbeautyboutique" target="_blank" class="nav-social-btn social-tiktok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Enhance Your Natural Beauty</h2>
+            <p>Your Sanctuary for Beauty & Wellness.</p>
+            <a href="#services" class="btn btn-primary">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Select services to add to your booking cart.</p>
+        </div>
+        <div class="services-layout">
+            <div class="services-container" id="services-container"></div>
+            <!-- Service Preview Panel -->
+            <div class="preview-panel" id="preview-panel">
+                <div class="preview-panel-header">
+                    <i class="fa-solid fa-spa"></i>
+                    <h3>Your Look Preview</h3>
+                </div>
+                <div class="preview-stack" id="preview-stack">
+                    <div class="preview-empty" id="preview-empty">
+                        <i class="fa-regular fa-gem"></i>
+                        <p>Add a service to see a preview of your look here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Side Drawer -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h2>Your Booking Cart</h2>
+            <button class="close-cart" id="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart-msg">Your cart is empty.</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Estimated Total:</span>
+                <span id="cart-total-price">$0</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="book-btn" disabled>Book Appointment</button>
+            <p class="clover-note">You will be taken to Clover to select your appointment time.</p>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="booking-modal-overlay"></div>
+    <div class="modal" id="booking-modal">
+        <div class="modal-header">
+            <h2>Book Appointment</h2>
+            <button class="close-modal" id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+            <p>This is where the Clover booking widget will be integrated.</p>
+            <div class="clover-placeholder">
+                <i class="fa-brands fa-clover" style="font-size: 3rem; color: #8F94FB; margin-bottom: 1rem;"></i>
+                <p><strong>Clover Integration Ready</strong></p>
+                <p>Waiting for your Clover link to redirect or embed.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About / Bio Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="brea-bio.jpg" alt="Brea, owner of Brea's Beauty Boutique">
+            </div>
+            <div class="about-text">
+                <h2>Meet Brea</h2>
+                <p>Hi, I'm Brea, the owner and artist behind Brea's Beauty Boutique. I started my business in 2024 with a passion for helping people feel confident and beautiful.</p>
+                <p>My journey began with my own nails. They were naturally weak and prone to breaking so I discovered the benefits of gel nails. Over time, I realized how much having beautiful nails and later, lashes boosted my confidence and made me feel my best. That feeling inspired me to create the same experience for others.</p>
+                <p>Today, I specialize in a wide range of services in a welcoming, relaxing environment where every client feels valued. Whether you're getting ready for a special occasion or simply pampering yourself, my goal is for you to leave feeling refreshed, confident, and excited to show off your new look.</p>
+                <p>I can't wait to welcome you and help you feel as amazing as you are.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="section-header">
+            <h2>What Our Clients Say</h2>
+            <p>A few words from our Google and Facebook reviews.</p>
+        </div>
+        <div class="reviews-grid" id="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"Brea is seriously the best ever... Brea has an eye for beauty and amazing artistic abilities. I am always super excited and confident when I step out of her room."</p>
+                <div class="review-author">
+                    <span class="review-name">Jessi Topps</span>
+                    <span class="review-source"><i class="fa-brands fa-google"></i> Google Review</span>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"She did my nails and a lash lift and tint, which was completely new to me!... My nails turned out beautiful, and I was amazed by how much I loved the lash lift and tint."</p>
+                <div class="review-author">
+                    <span class="review-name">Natalie Lebeau</span>
+                    <span class="review-source"><i class="fa-brands fa-google"></i> Google Review</span>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"Brea is very professional. She made me feel welcome and she took her time explaining as she went along and answered all my questions... Thank you ever so much Brea for helping me get the look I've been wanting."</p>
+                <div class="review-author">
+                    <span class="review-name">Carol Clement</span>
+                    <span class="review-source"><i class="fa-brands fa-google"></i> Google Review</span>
+                </div>
+            </div>
+        </div>
+
+        <!--
+            Facebook reviews still needed — once you send them over, add more
+            .review-card blocks to either grid above, using
+            fa-brands fa-facebook for the source icon.
+        -->
+        <div class="reviews-more" id="reviews-more">
+            <div class="reviews-grid reviews-grid-extra">
+                <div class="review-card">
+                    <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="review-text">"Bre does amazing lashes! I switched to her when I moved to north bay... Her lashes last a long time (and I'm hard on them - sweat from gym, wind and dirt)."</p>
+                    <div class="review-author">
+                        <span class="review-name">Ash Neek</span>
+                        <span class="review-source"><i class="fa-brands fa-google"></i> Google Review</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="review-text">"She is fantastic, extra clean and well sanitized! She did a terrific job!... I did an eyelash extension and they turned out beautifully and never had problems!"</p>
+                    <div class="review-author">
+                        <span class="review-name">Sara Donaghey</span>
+                        <span class="review-source"><i class="fa-brands fa-google"></i> Google Review</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="review-text">"She gave me GORGEOUS tinsel volume lashes and I became a whole new person! It was my first time getting extensions and she made me so comfortable that I literally fell asleep on the table."</p>
+                    <div class="review-author">
+                        <span class="review-name">Annette Kay</span>
+                        <span class="review-source"><i class="fa-brands fa-google"></i> Google Review</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews-toggle-wrap">
+            <button class="reviews-toggle-btn" id="reviews-toggle-btn" aria-expanded="false" aria-controls="reviews-more">
+                <span>Show More Reviews</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Leave a Review Section -->
+    <section class="leave-review-section" id="leave-review">
+        <div class="section-header">
+            <h2>Share Your Experience</h2>
+            <p>Loved your visit? A public review helps so much — or send Brea a note directly below.</p>
+        </div>
+        <div class="review-cta-buttons">
+            <a href="https://www.facebook.com/profile.php?id=61567885860460&sk=reviews" target="_blank" class="btn review-cta-btn review-cta-facebook"><i class="fa-brands fa-facebook"></i> Leave a Facebook Review</a>
+            <a href="https://share.google/JqlmJR28jYGUiYkaI" target="_blank" class="btn review-cta-btn review-cta-google"><i class="fa-brands fa-google"></i> Leave a Google Review</a>
+        </div>
+
+        <div class="review-form-wrap">
+            <p class="review-form-note">Loved your visit? Share your feedback directly on our website below!</p>
+            <form id="review-form" class="review-form">
+                <div class="form-row">
+                    <label for="review-name">Your Name</label>
+                    <input type="text" id="review-name" name="review-name" placeholder="e.g. Taylor M." required>
+                </div>
+                <div class="form-row">
+                    <label>Your Rating</label>
+                    <div class="star-picker" id="star-picker" data-rating="0">
+                        <i class="fa-regular fa-star" data-value="1"></i>
+                        <i class="fa-regular fa-star" data-value="2"></i>
+                        <i class="fa-regular fa-star" data-value="3"></i>
+                        <i class="fa-regular fa-star" data-value="4"></i>
+                        <i class="fa-regular fa-star" data-value="5"></i>
+                    </div>
+                    <div id="rating-error"><i class="fa-solid fa-circle-exclamation"></i> Please select a rating (1-5 stars)</div>
+                </div>
+                <div class="form-row">
+                    <label for="review-message">Your Review</label>
+                    <textarea id="review-message" name="review-message" rows="4" placeholder="Tell us about your visit..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit Review</button>
+                <p class="review-form-disclaimer">Your review will be posted to our reviews section immediately.</p>
+            </form>
+
+            <div class="review-success-msg" id="review-success-msg" style="display: none; text-align: center; padding: 1.5rem 0;">
+                <div style="font-size: 3rem; color: var(--primary-dark); margin-bottom: 1rem;">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 style="font-family: 'Outfit', sans-serif; font-weight: 600; color: var(--primary-dark); margin-bottom: 0.5rem;">Thank You!</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Your review has been successfully posted to our website.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; max-width: 280px; margin: 0 auto;">
+                    <button id="btn-email-copy" class="btn btn-secondary btn-block" style="font-size: 0.85rem;"><i class="fa-solid fa-envelope"></i> Also Email to Brea</button>
+                    <button id="btn-reset-form" class="btn btn-primary btn-block" style="font-size: 0.85rem;">Write Another Review</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Brea's Beauty Boutique</h3>
+                <p>Your premier destination for beauty and relaxation.</p>
+                <p style="margin-top: 10px;"><a href="tel:7054920558"><i class="fa-solid fa-phone"></i> 705-492-0558</a></p>
+                <p style="margin-top: 5px;"><a href="mailto:breasbeauty23@gmail.com"><i class="fa-solid fa-envelope"></i> breasbeauty23@gmail.com</a></p>
+            </div>
+            <div class="footer-social">
+                <p class="follow-label">Follow me on</p>
+                <div class="social-buttons">
+                    <a href="https://instagram.com/breas_beautyboutique" target="_blank" class="social-btn social-instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61567885860460" target="_blank" class="social-btn social-facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                    <a href="https://tiktok.com/@breasbeautyboutique" target="_blank" class="social-btn social-tiktok"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Brea's Beauty Boutique. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js?v=20260701-no-flash"></script>
+</body>
+</html>
